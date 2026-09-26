@@ -136,7 +136,7 @@ OmniJev 是一个 *System One* 决策模型。你不是让它写字，而是给�
 | chess3 | 5.62 | 13.00 | 20.00 | 6.17 | 15.13 | 5.49 | 22.67 |
 | events | 39.09 | 48.53 | 85.87 | 48.56 | 86.47 | 55.56 | 89.13 |
 | game | 41.15 | 47.33 | 83.51 | 17.15 | 80.32 | 15.36 | 90.36 |
-| genmcq | 57.06 | 79.87 | 77.60 | 60.08 | 83.80 | 73.25 | 88.20 |
+| genmcq ⚠ label defect / 标签错误 | withdrawn / 待重评 | withdrawn / 待重评 | withdrawn / 待重评 | withdrawn / 待重评 | withdrawn / 待重评 | withdrawn / 待重评 | withdrawn / 待重评 |
 | gomoku | 52.54 | 45.67 | 69.80 | 18.24 | 68.27 | 16.60 | 70.60 |
 | jat | 36.90 | 50.33 | 63.73 | 27.71 | 63.00 | 25.79 | 65.87 |
 | jog_bridge | 28.12 | 28.80 | 43.84 | 24.14 | 48.43 | 29.36 | 45.97 |
@@ -289,3 +289,5 @@ OmniJev 由 **北京中关村学院**、**中国科学院自动化研究所**、
 联系我们——学术交流、项目合作：s-xtr24@bza.edu.cn
 
 <div align="center"><sub>北京中关村学院 · 中国科学院自动化研究所 · 智进化 · <a href="https://omnijev.net/">omnijev.net</a></sub></div>
+
+> **A-OKVQA correction / 更正：** the old `genmcq` aggregate contains incorrectly generated yes/no labels and is withdrawn as an understanding score. The saved 4B multiple-choice subset scores **77.07% (750)**. See the [dataset and question-type audit](docs/dataset_scores_v11.md).
