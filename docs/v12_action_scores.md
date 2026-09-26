@@ -40,6 +40,42 @@ Checkpoint selection step: **1600**. [Full raw metrics, including validation, NL
 | drive_fast | — | — | — | — |
 | drive_highway | 64 | 0.005581 | 0.003849 | 0.005146 |
 
+## Stage 2: discrete actions
+
+Checkpoint selection step: **10000**. [Full raw metrics, including validation, NLL, Brier and ECE](v12_action_offline_stage2.json).
+
+| Dataset / environment | Questions | Accuracy | Balanced accuracy | Train-majority baseline | ECE (10 bins) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Atari-alien | 128 | 24.22% | 17.79% | 10.16% | 0.1306 |
+| Atari-asterix | 128 | 14.84% | 14.59% | 7.03% | 0.2422 |
+| Atari-bank_heist | 128 | 16.41% | 14.40% | 4.69% | 0.1738 |
+| Atari-breakout | 109 | 34.86% | 43.75% | 32.11% | 0.2366 |
+| Atari-demon_attack | 128 | 26.56% | 22.21% | 17.97% | 0.1296 |
+| Atari-freeway | — | — | — | — | — |
+| Atari-frostbite | — | — | — | — | — |
+| Atari-hero | 128 | 25.78% | 20.80% | 10.94% | 0.2468 |
+| Atari-ms_pacman | 128 | 14.84% | 13.62% | 9.38% | 0.2437 |
+| Atari-road_runner | 128 | 37.50% | 36.11% | 11.72% | 0.1544 |
+| Atari-seaquest | 128 | 11.72% | 13.22% | 6.25% | 0.2241 |
+| Mario-Pygame-1-1 | 128 | 25.78% | 18.65% | 12.50% | 0.0743 |
+| MiniGrid-DoorKey-6x6-v0 | 128 | 45.31% | 42.46% | 16.41% | 0.4139 |
+| MiniGrid-DoorKey-8x8-v0 | 128 | 78.12% | 73.21% | 60.94% | 0.1486 |
+| MiniGrid-Empty-8x8-v0 | — | — | — | — | — |
+| MiniGrid-Empty-Random-6x6-v0 | 49 | 59.18% | 41.78% | 65.31% | 0.3868 |
+| MiniGrid-FourRooms-v0 | 128 | 76.56% | 44.03% | 81.25% | 0.1848 |
+| MiniGrid-LavaGapS7-v0 | 128 | 64.06% | 55.45% | 7.03% | 0.3133 |
+
+## Stage 2: continuous actions
+
+| Environment | States | First-command MSE | Constant train-mean MSE | Four-command chunk MSE |
+| --- | ---: | ---: | ---: | ---: |
+| arm_pickplace | 128 | 0.105290 | 0.402113 | 0.159669 |
+| arm_push | 128 | 0.048985 | 0.192689 | 0.086292 |
+| arm_reach | 128 | 0.052982 | 0.265037 | 0.047421 |
+| drive_dense | 128 | 0.009876 | 0.010531 | 0.010468 |
+| drive_fast | 128 | 0.008643 | 0.008568 | 0.007158 |
+| drive_highway | 128 | 0.004484 | 0.004770 | 0.003363 |
+
 ## Coverage and interpretation
 
 Freeway has no validation/test trials in this split. Frostbite has no selected test rows. Fixed-map Empty 8x8 has no eligible trained head after deduplication. The manifest reports every source and split, including zeros. Fetch supplies privileged object and goal state, not vision-only observations. Driving scenarios share HighwayEnv and are not independent external datasets.

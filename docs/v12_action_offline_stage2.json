@@ -1,0 +1,451 @@
+{
+  "candidate": "v1.2-stage2-action-head",
+  "status": "trained experimental candidate; not released",
+  "best_step": 10000,
+  "general_checkpoint_unchanged": true,
+  "general_capability_claim": "Same frozen weights and original general route; full paired dataset regression still required for release.",
+  "val": {
+    "Atari-alien": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.15625,
+      "balanced_accuracy": 0.1517563760280609,
+      "classes_present": 13,
+      "constant_train_majority_accuracy": 0.1015625,
+      "nll": 2.834207534790039,
+      "brier": 0.9327194094657898,
+      "ece_10_bins": 0.19951059482991695
+    },
+    "Atari-asterix": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.2109375,
+      "balanced_accuracy": 0.21436725556850433,
+      "classes_present": 9,
+      "constant_train_majority_accuracy": 0.1171875,
+      "nll": 2.377633571624756,
+      "brier": 0.9366368055343628,
+      "ece_10_bins": 0.14697154017630965
+    },
+    "Atari-bank_heist": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.0859375,
+      "balanced_accuracy": 0.08303079009056091,
+      "classes_present": 14,
+      "constant_train_majority_accuracy": 0.078125,
+      "nll": 3.0878872871398926,
+      "brier": 1.0185234546661377,
+      "ece_10_bins": 0.23443625262007117
+    },
+    "Atari-breakout": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.421875,
+      "balanced_accuracy": 0.42430877685546875,
+      "classes_present": 4,
+      "constant_train_majority_accuracy": 0.2421875,
+      "nll": 1.6101367473602295,
+      "brier": 0.7742012739181519,
+      "ece_10_bins": 0.21450683963485062
+    },
+    "Atari-demon_attack": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.390625,
+      "balanced_accuracy": 0.389361709356308,
+      "classes_present": 6,
+      "constant_train_majority_accuracy": 0.1796875,
+      "nll": 1.6316471099853516,
+      "brier": 0.7709948420524597,
+      "ece_10_bins": 0.07588871195912361
+    },
+    "Atari-frostbite": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.21875,
+      "balanced_accuracy": 0.2201770544052124,
+      "classes_present": 10,
+      "constant_train_majority_accuracy": 0.09375,
+      "nll": 2.437681198120117,
+      "brier": 0.9169161915779114,
+      "ece_10_bins": 0.19098739512264729
+    },
+    "Atari-hero": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.25,
+      "balanced_accuracy": 0.2779078185558319,
+      "classes_present": 14,
+      "constant_train_majority_accuracy": 0.1015625,
+      "nll": 2.350269079208374,
+      "brier": 0.9102463126182556,
+      "ece_10_bins": 0.2507658915128559
+    },
+    "Atari-ms_pacman": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.1796875,
+      "balanced_accuracy": 0.18105833232402802,
+      "classes_present": 9,
+      "constant_train_majority_accuracy": 0.125,
+      "nll": 2.508777141571045,
+      "brier": 0.9568943977355957,
+      "ece_10_bins": 0.1946067032404244
+    },
+    "Atari-road_runner": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.2421875,
+      "balanced_accuracy": 0.23045110702514648,
+      "classes_present": 12,
+      "constant_train_majority_accuracy": 0.1015625,
+      "nll": 2.5011744499206543,
+      "brier": 0.9125394821166992,
+      "ece_10_bins": 0.2757684323005378
+    },
+    "Atari-seaquest": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.125,
+      "balanced_accuracy": 0.12808123230934143,
+      "classes_present": 17,
+      "constant_train_majority_accuracy": 0.046875,
+      "nll": 2.8984873294830322,
+      "brier": 0.9642117023468018,
+      "ece_10_bins": 0.19703238178044558
+    },
+    "Mario-Pygame-1-1": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.15625,
+      "balanced_accuracy": 0.09358533471822739,
+      "classes_present": 17,
+      "constant_train_majority_accuracy": 0.0859375,
+      "nll": 2.7371840476989746,
+      "brier": 0.9195650815963745,
+      "ece_10_bins": 0.1621802356094122
+    },
+    "MiniGrid-DoorKey-6x6-v0": {
+      "n": 81,
+      "mode": "choice",
+      "accuracy": 0.6790123581886292,
+      "balanced_accuracy": 0.5795430541038513,
+      "classes_present": 5,
+      "constant_train_majority_accuracy": 0.3580246865749359,
+      "nll": 1.341448187828064,
+      "brier": 0.5292742848396301,
+      "ece_10_bins": 0.22970716760028154
+    },
+    "MiniGrid-DoorKey-8x8-v0": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.6640625,
+      "balanced_accuracy": 0.6385185122489929,
+      "classes_present": 5,
+      "constant_train_majority_accuracy": 0.5625,
+      "nll": 1.0672167539596558,
+      "brier": 0.5059391260147095,
+      "ece_10_bins": 0.20358239859342575
+    },
+    "MiniGrid-Empty-Random-6x6-v0": {
+      "n": 25,
+      "mode": "choice",
+      "accuracy": 0.47999998927116394,
+      "balanced_accuracy": 0.2823529541492462,
+      "classes_present": 3,
+      "constant_train_majority_accuracy": 0.6800000071525574,
+      "nll": 5.348408222198486,
+      "brier": 0.9998551607131958,
+      "ece_10_bins": 0.5086668692529202
+    },
+    "MiniGrid-FourRooms-v0": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.859375,
+      "balanced_accuracy": 0.6162759065628052,
+      "classes_present": 3,
+      "constant_train_majority_accuracy": 0.8515625,
+      "nll": 0.8151463270187378,
+      "brier": 0.26293450593948364,
+      "ece_10_bins": 0.09873319533653557
+    },
+    "MiniGrid-LavaGapS7-v0": {
+      "n": 25,
+      "mode": "choice",
+      "accuracy": 0.6800000071525574,
+      "balanced_accuracy": 0.4592592716217041,
+      "classes_present": 3,
+      "constant_train_majority_accuracy": 0.07999999821186066,
+      "nll": 1.8024051189422607,
+      "brier": 0.5699945092201233,
+      "ece_10_bins": 0.29851501481607556
+    },
+    "arm_pickplace": {
+      "n": 128,
+      "mode": "continuous",
+      "normalized_chunk_mse": 0.2060215324163437,
+      "normalized_first_action_mse": 0.08200429379940033,
+      "constant_train_mean_first_mse": 0.3700971007347107,
+      "nll": -1.4841997623443604
+    },
+    "arm_push": {
+      "n": 128,
+      "mode": "continuous",
+      "normalized_chunk_mse": 0.07065755128860474,
+      "normalized_first_action_mse": 0.04508984088897705,
+      "constant_train_mean_first_mse": 0.20923754572868347,
+      "nll": -1.203498363494873
+    },
+    "arm_reach": {
+      "n": 128,
+      "mode": "continuous",
+      "normalized_chunk_mse": 0.05892787128686905,
+      "normalized_first_action_mse": 0.06654021888971329,
+      "constant_train_mean_first_mse": 0.27976807951927185,
+      "nll": -1.0645980834960938
+    },
+    "drive_dense": {
+      "n": 128,
+      "mode": "continuous",
+      "normalized_chunk_mse": 0.008666666224598885,
+      "normalized_first_action_mse": 0.00865948386490345,
+      "constant_train_mean_first_mse": 0.009078625589609146,
+      "nll": -1.9315305948257446
+    },
+    "drive_fast": {
+      "n": 128,
+      "mode": "continuous",
+      "normalized_chunk_mse": 0.017422759905457497,
+      "normalized_first_action_mse": 0.021155625581741333,
+      "constant_train_mean_first_mse": 0.02118683233857155,
+      "nll": -1.8666020631790161
+    },
+    "drive_highway": {
+      "n": 128,
+      "mode": "continuous",
+      "normalized_chunk_mse": 0.0072769783437252045,
+      "normalized_first_action_mse": 0.012408468872308731,
+      "constant_train_mean_first_mse": 0.011684101074934006,
+      "nll": -2.0708093643188477
+    }
+  },
+  "test": {
+    "Atari-alien": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.2421875,
+      "balanced_accuracy": 0.17786234617233276,
+      "classes_present": 12,
+      "constant_train_majority_accuracy": 0.1015625,
+      "nll": 2.384695529937744,
+      "brier": 0.876027524471283,
+      "ece_10_bins": 0.1305756652727723
+    },
+    "Atari-asterix": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.1484375,
+      "balanced_accuracy": 0.14588724076747894,
+      "classes_present": 9,
+      "constant_train_majority_accuracy": 0.0703125,
+      "nll": 2.4308764934539795,
+      "brier": 0.9550078511238098,
+      "ece_10_bins": 0.2421769076026976
+    },
+    "Atari-bank_heist": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.1640625,
+      "balanced_accuracy": 0.14396658539772034,
+      "classes_present": 15,
+      "constant_train_majority_accuracy": 0.046875,
+      "nll": 2.948030710220337,
+      "brier": 0.9890990257263184,
+      "ece_10_bins": 0.17379454988986254
+    },
+    "Atari-breakout": {
+      "n": 109,
+      "mode": "choice",
+      "accuracy": 0.3486238420009613,
+      "balanced_accuracy": 0.4375,
+      "classes_present": 4,
+      "constant_train_majority_accuracy": 0.3211008906364441,
+      "nll": 1.5884547233581543,
+      "brier": 0.8411170244216919,
+      "ece_10_bins": 0.23659549793228507
+    },
+    "Atari-demon_attack": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.265625,
+      "balanced_accuracy": 0.2220948189496994,
+      "classes_present": 7,
+      "constant_train_majority_accuracy": 0.1796875,
+      "nll": 1.9248790740966797,
+      "brier": 0.8532924056053162,
+      "ece_10_bins": 0.1296167797408998
+    },
+    "Atari-hero": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.2578125,
+      "balanced_accuracy": 0.2080102562904358,
+      "classes_present": 14,
+      "constant_train_majority_accuracy": 0.109375,
+      "nll": 2.9577488899230957,
+      "brier": 0.9856842160224915,
+      "ece_10_bins": 0.24680326762609184
+    },
+    "Atari-ms_pacman": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.1484375,
+      "balanced_accuracy": 0.13619454205036163,
+      "classes_present": 10,
+      "constant_train_majority_accuracy": 0.09375,
+      "nll": 2.7046566009521484,
+      "brier": 0.9899426102638245,
+      "ece_10_bins": 0.24371368065476418
+    },
+    "Atari-road_runner": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.375,
+      "balanced_accuracy": 0.36111319065093994,
+      "classes_present": 10,
+      "constant_train_majority_accuracy": 0.1171875,
+      "nll": 1.9423261880874634,
+      "brier": 0.7841362953186035,
+      "ece_10_bins": 0.15440657502040267
+    },
+    "Atari-seaquest": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.1171875,
+      "balanced_accuracy": 0.1322150081396103,
+      "classes_present": 17,
+      "constant_train_majority_accuracy": 0.0625,
+      "nll": 3.180743455886841,
+      "brier": 1.0320615768432617,
+      "ece_10_bins": 0.22413011826574802
+    },
+    "Mario-Pygame-1-1": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.2578125,
+      "balanced_accuracy": 0.1864881068468094,
+      "classes_present": 10,
+      "constant_train_majority_accuracy": 0.125,
+      "nll": 2.078655242919922,
+      "brier": 0.8435423374176025,
+      "ece_10_bins": 0.07432044949382544
+    },
+    "MiniGrid-DoorKey-6x6-v0": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.453125,
+      "balanced_accuracy": 0.42458677291870117,
+      "classes_present": 5,
+      "constant_train_majority_accuracy": 0.1640625,
+      "nll": 2.698765754699707,
+      "brier": 0.9114103317260742,
+      "ece_10_bins": 0.41391812078654766
+    },
+    "MiniGrid-DoorKey-8x8-v0": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.78125,
+      "balanced_accuracy": 0.7321123480796814,
+      "classes_present": 5,
+      "constant_train_majority_accuracy": 0.609375,
+      "nll": 0.7890117168426514,
+      "brier": 0.3737589120864868,
+      "ece_10_bins": 0.1485881502740085
+    },
+    "MiniGrid-Empty-Random-6x6-v0": {
+      "n": 49,
+      "mode": "choice",
+      "accuracy": 0.5918367505073547,
+      "balanced_accuracy": 0.4178240895271301,
+      "classes_present": 3,
+      "constant_train_majority_accuracy": 0.6530612111091614,
+      "nll": 4.962790489196777,
+      "brier": 0.7771172523498535,
+      "ece_10_bins": 0.38676870334893465
+    },
+    "MiniGrid-FourRooms-v0": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.765625,
+      "balanced_accuracy": 0.4402680993080139,
+      "classes_present": 3,
+      "constant_train_majority_accuracy": 0.8125,
+      "nll": 1.3387727737426758,
+      "brier": 0.42066189646720886,
+      "ece_10_bins": 0.18476335611194372
+    },
+    "MiniGrid-LavaGapS7-v0": {
+      "n": 128,
+      "mode": "choice",
+      "accuracy": 0.640625,
+      "balanced_accuracy": 0.5544554591178894,
+      "classes_present": 3,
+      "constant_train_majority_accuracy": 0.0703125,
+      "nll": 1.8111624717712402,
+      "brier": 0.6137670874595642,
+      "ece_10_bins": 0.3133123777806759
+    },
+    "arm_pickplace": {
+      "n": 128,
+      "mode": "continuous",
+      "normalized_chunk_mse": 0.15966930985450745,
+      "normalized_first_action_mse": 0.10528986155986786,
+      "constant_train_mean_first_mse": 0.40211284160614014,
+      "nll": -1.3986306190490723
+    },
+    "arm_push": {
+      "n": 128,
+      "mode": "continuous",
+      "normalized_chunk_mse": 0.08629221469163895,
+      "normalized_first_action_mse": 0.04898476228117943,
+      "constant_train_mean_first_mse": 0.1926889419555664,
+      "nll": -1.2696117162704468
+    },
+    "arm_reach": {
+      "n": 128,
+      "mode": "continuous",
+      "normalized_chunk_mse": 0.04742107540369034,
+      "normalized_first_action_mse": 0.05298210680484772,
+      "constant_train_mean_first_mse": 0.26503726840019226,
+      "nll": -1.1234333515167236
+    },
+    "drive_dense": {
+      "n": 128,
+      "mode": "continuous",
+      "normalized_chunk_mse": 0.010467852465808392,
+      "normalized_first_action_mse": 0.009875977411866188,
+      "constant_train_mean_first_mse": 0.010531296953558922,
+      "nll": -1.919587254524231
+    },
+    "drive_fast": {
+      "n": 128,
+      "mode": "continuous",
+      "normalized_chunk_mse": 0.007158436346799135,
+      "normalized_first_action_mse": 0.00864323414862156,
+      "constant_train_mean_first_mse": 0.00856811087578535,
+      "nll": -1.956620216369629
+    },
+    "drive_highway": {
+      "n": 128,
+      "mode": "continuous",
+      "normalized_chunk_mse": 0.003363071009516716,
+      "normalized_first_action_mse": 0.004483915865421295,
+      "constant_train_mean_first_mse": 0.004770339000970125,
+      "nll": -2.2422385215759277
+    }
+  },
+  "test_caveat": "Development holdout after stage1 inspection, not a fresh untouched test; Atari historical exposure; per-action sampling; fixed-map tasks. Offline metrics do not establish closed-loop control.",
+  "release_approved": false,
+  "action_checkpoint_sha256": "31cef143004844cb234e839af1f0fb3a9a561bd5642ddbf6a54b19f50090e620"
+}
