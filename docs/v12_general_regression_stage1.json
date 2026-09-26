@@ -1,0 +1,105 @@
+{
+  "protocol": "Same frozen v1.1 model: original call, action-sidecar call, then original general call via explicit router. Compare returned answers, probabilities and confidence; exclude only latency_s and latency_total_s. Returned probabilities are rounded by the existing API.",
+  "states": 152,
+  "questions": 393,
+  "max_absolute_returned_value_difference": 0.0,
+  "passed": true,
+  "datasets": {
+    "events/charades_events": {
+      "states": 8,
+      "questions": 40,
+      "max_absolute_difference": 0.0
+    },
+    "genmcq/aokvqa": {
+      "states": 8,
+      "questions": 8,
+      "max_absolute_difference": 0.0
+    },
+    "genmcq/okvqa_train": {
+      "states": 8,
+      "questions": 8,
+      "max_absolute_difference": 0.0
+    },
+    "genmcq/scienceqa": {
+      "states": 8,
+      "questions": 8,
+      "max_absolute_difference": 0.0
+    },
+    "longtext/case_hold": {
+      "states": 8,
+      "questions": 8,
+      "max_absolute_difference": 0.0
+    },
+    "longtext/ecthr": {
+      "states": 8,
+      "questions": 24,
+      "max_absolute_difference": 0.0
+    },
+    "longtext/ledgar": {
+      "states": 8,
+      "questions": 8,
+      "max_absolute_difference": 0.0
+    },
+    "longtext/scotus": {
+      "states": 8,
+      "questions": 8,
+      "max_absolute_difference": 0.0
+    },
+    "longtext/unfair_tos": {
+      "states": 8,
+      "questions": 16,
+      "max_absolute_difference": 0.0
+    },
+    "pope/adversarial": {
+      "states": 8,
+      "questions": 8,
+      "max_absolute_difference": 0.0
+    },
+    "pope/popular": {
+      "states": 8,
+      "questions": 8,
+      "max_absolute_difference": 0.0
+    },
+    "pope/random": {
+      "states": 8,
+      "questions": 8,
+      "max_absolute_difference": 0.0
+    },
+    "video/coin": {
+      "states": 8,
+      "questions": 141,
+      "max_absolute_difference": 0.0
+    },
+    "video/lvr": {
+      "states": 8,
+      "questions": 16,
+      "max_absolute_difference": 0.0
+    },
+    "video/robot": {
+      "states": 8,
+      "questions": 43,
+      "max_absolute_difference": 0.0
+    },
+    "video/spatial_openspaces": {
+      "states": 8,
+      "questions": 8,
+      "max_absolute_difference": 0.0
+    },
+    "video/spatial_spacellava": {
+      "states": 8,
+      "questions": 8,
+      "max_absolute_difference": 0.0
+    },
+    "video/spatial_vsr": {
+      "states": 8,
+      "questions": 17,
+      "max_absolute_difference": 0.0
+    },
+    "vqa/okvqa_pool": {
+      "states": 8,
+      "questions": 8,
+      "max_absolute_difference": 0.0
+    }
+  },
+  "limitation": "Integration regression, not a new benchmark score or statistical proof of every general capability."
+}
