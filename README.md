@@ -52,6 +52,25 @@ Every example below works for all three: `MSO1("ckpt", "base")` picks the right 
 
 Download all four weight packages and SHA-256 checksums from the [GitHub v1.1 release](https://github.com/tinnel123666888/OmniJev/releases/tag/v1.1).
 
+## v1.1 replay demos
+
+**8 short videos + a 40-second compilation, 209 states and 611 questions, all with real v1.1 4B inference.** Games, phones, web tasks, two-view robot scenes and video understanding. Purple shows model probabilities; green REF shows source annotations.
+
+[All 8 demos](docs/demos_v11.md) · [Watch/download the compilation](https://github.com/tinnel123666888/OmniJev/raw/refs/heads/main/docs/media/v11/showreel.mp4) · [Download the full pack](https://github.com/tinnel123666888/OmniJev/releases/download/v1.1/OmniJev-v1.1-demo-pack.zip)
+
+These are recorded-trajectory replays, not live model-controlled runs. Some inputs may overlap training; they are illustrations, not new benchmark results.
+
+<table>
+<tr>
+<td width="50%"><a href="docs/media/v11/arcade.mp4"><img src="docs/media/v11/arcade.gif" width="100%" alt="Arcade: Enduro, Skiing and Pong"></a><br><sub><b>Arcade: Enduro, Skiing and Pong</b> · 22.5s · <a href="docs/media/v11/arcade.mp4">MP4</a></sub></td>
+<td width="50%"><a href="docs/media/v11/mario.mp4"><img src="docs/media/v11/mario.gif" width="100%" alt="Mario: run and jump from two frames"></a><br><sub><b>Mario: run and jump from two frames</b> · 16.5s · <a href="docs/media/v11/mario.mp4">MP4</a></sub></td>
+</tr>
+<tr>
+<td width="50%"><a href="docs/media/v11/phone.mp4"><img src="docs/media/v11/phone.gif" width="100%" alt="Phone: weather, timer and drawing tutorial"></a><br><sub><b>Phone: weather, timer and drawing tutorial</b> · 26.2s · <a href="docs/media/v11/phone.mp4">MP4</a></sub></td>
+<td width="50%"><a href="docs/media/v11/video.mp4"><img src="docs/media/v11/video.gif" width="100%" alt="Video: action, start frame and completion"></a><br><sub><b>Video: action, start frame and completion</b> · 20.5s · <a href="docs/media/v11/video.mp4">MP4</a></sub></td>
+</tr>
+</table>
+
 ## What it does
 
 The clips below illustrate tasks and the interface using historical releases. They are not newly generated v1.1 demonstrations or latency measurements.

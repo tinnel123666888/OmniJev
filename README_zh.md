@@ -52,6 +52,25 @@ OmniJev 是一个 *System One* 决策模型。你不是让它写字，而是给�
 
 四个权重压缩包和 SHA-256 校验清单也可从 [GitHub v1.1 Release](https://github.com/tinnel123666888/OmniJev/releases/tag/v1.1) 下载。
 
+## v1.1 新演示
+
+**8 支短片 + 40 秒合集，209 个状态、611 个问题，全部使用 v1.1 4B 真实推理。** 游戏、手机、网页、双视角机器人与视频理解；紫色为模型概率，绿色 REF 为参考标注。
+
+[查看全部 8 类演示](docs/demos_v11.md) · [播放/下载合集](https://github.com/tinnel123666888/OmniJev/raw/refs/heads/main/docs/media/v11/showreel.mp4) · [下载完整包](https://github.com/tinnel123666888/OmniJev/releases/download/v1.1/OmniJev-v1.1-demo-pack.zip)
+
+这些是原始轨迹的回放分析，操作并非由模型在线执行；部分素材可能与训练数据重叠，不作为新的评测成绩。
+
+<table>
+<tr>
+<td width="50%"><a href="docs/media/v11/arcade.mp4"><img src="docs/media/v11/arcade.gif" width="100%" alt="街机三连 · 赛车、滑雪与乒乓球"></a><br><sub><b>街机三连 · 赛车、滑雪与乒乓球</b> · 22.5s · <a href="docs/media/v11/arcade.mp4">MP4</a></sub></td>
+<td width="50%"><a href="docs/media/v11/mario.mp4"><img src="docs/media/v11/mario.gif" width="100%" alt="马里奥 · 双帧动作判断"></a><br><sub><b>马里奥 · 双帧动作判断</b> · 16.5s · <a href="docs/media/v11/mario.mp4">MP4</a></sub></td>
+</tr>
+<tr>
+<td width="50%"><a href="docs/media/v11/phone.mp4"><img src="docs/media/v11/phone.gif" width="100%" alt="手机操作 · 伦敦天气、59 分钟计时、绘画教程"></a><br><sub><b>手机操作 · 伦敦天气、59 分钟计时、绘画教程</b> · 26.2s · <a href="docs/media/v11/phone.mp4">MP4</a></sub></td>
+<td width="50%"><a href="docs/media/v11/video.mp4"><img src="docs/media/v11/video.gif" width="100%" alt="视频理解 · 动作识别、起点定位与结束判断"></a><br><sub><b>视频理解 · 动作识别、起点定位与结束判断</b> · 20.5s · <a href="docs/media/v11/video.mp4">MP4</a></sub></td>
+</tr>
+</table>
+
 ## 它能做什么
 
 以下动图来自历史版本，用于展示接口和任务形式；它们不是 v1.1 权重的新演示或新延迟测量。

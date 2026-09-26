@@ -1,0 +1,106 @@
+{
+  "model": "OmniJev-4B v1.1",
+  "mode": "Recorded-trajectory illustrations selected before inference, not closed-loop control or a benchmark. Some records may overlap training.",
+  "states": 209,
+  "questions": 611,
+  "plan_sha256": "1a58340a7f5d3bef3b1811c15d5d15d38ebc342042fc85064d3879ab152919af",
+  "inference_wall_s_median": 0.2405694155022502,
+  "clips": [
+    {
+      "id": "snake",
+      "title": "贪吃蛇 · 下一步与碰撞风险",
+      "states": 36,
+      "seconds": 19.0,
+      "frames": 456,
+      "sha256": "05d68bea5a69065a79c398d0548e0de5efee54359e9bbca21dc308cb5bb3d7b6"
+    },
+    {
+      "id": "mario",
+      "title": "马里奥 · 双帧动作判断",
+      "states": 28,
+      "seconds": 16.5,
+      "frames": 396,
+      "sha256": "eaf75232737cfef7646b50505fa1a44d496c67ea5233f2485eb731206805b4fc"
+    },
+    {
+      "id": "arcade",
+      "title": "街机三连 · 赛车、滑雪与乒乓球",
+      "states": 48,
+      "seconds": 22.5,
+      "frames": 540,
+      "sha256": "5791fb61238ef9e741a35fe64f931aae477b6fe5cc9a2fe2d7f3cf348435c82e"
+    },
+    {
+      "id": "board",
+      "title": "棋盘推理 · 国际象棋与五子棋",
+      "states": 15,
+      "seconds": 14.375,
+      "frames": 345,
+      "sha256": "4063f280304a12d90abbed882995543d776d365f4095f6e5eaf112018f0710d0"
+    },
+    {
+      "id": "phone",
+      "title": "手机操作 · 伦敦天气、59 分钟计时、绘画教程",
+      "states": 30,
+      "seconds": 26.25,
+      "frames": 630,
+      "sha256": "2dbadce52d3e16aaaf2fd0f7719b7ec4142c951f852fb2928c65f288e473d8a1"
+    },
+    {
+      "id": "web",
+      "title": "网页操作 · 机场路线与家具比较",
+      "states": 29,
+      "seconds": 25.458333333333332,
+      "frames": 611,
+      "sha256": "a3bd6f4ea9efd89e140e850db866fc4a1fee55e04e8b3613dffe8930b93b4dcb"
+    },
+    {
+      "id": "robot",
+      "title": "双视角机器人 · 从左下向右上折叠布料",
+      "states": 20,
+      "seconds": 12.5,
+      "frames": 300,
+      "sha256": "70d0ebca6c971371f962745b75473b92bbbd9bc5fa647209132964c4f310e6de"
+    },
+    {
+      "id": "video",
+      "title": "视频理解 · 动作识别、起点定位与结束判断",
+      "states": 3,
+      "seconds": 20.5,
+      "frames": 492,
+      "sha256": "2719c7256b82c5faedded11dcd5746f6afe0437bf1d8bb6e57ea1e748801f1ff"
+    }
+  ],
+  "showreel": {
+    "seconds": 40.291666666666664,
+    "frames": 967,
+    "sha256": "195e735dff4ac26c21cd277df7f2af0243d6d4c40eac3c08a5a33131ca2d8941"
+  },
+  "validation": "All 9 MP4 files fully decoded; all 8 GIFs have multiple frames; gallery links resolve; all 611 output distributions finite and bounded; all workers used the same checkpoint files and final input plan.",
+  "checkpoint": {
+    "repo": "tinnel123/OmniJev-4B",
+    "revision": "v1.1",
+    "files_sha256": {
+      "head.pt": "7b801a1901040e70559deb74eadb11709540ff65ef926213ecf881e4f4070320",
+      "head_meta.json": "d184edd664ad85bbbb782157a8965db33c36d4a144d8b781d19f5c11cd2778ee",
+      "adapter_model.safetensors": "96247914d7e2e68a7124c35c49393267c2beb98769d096f5172ed0043851f0f0"
+    }
+  },
+  "inference": {
+    "hardware": "MLU590",
+    "workers": 8,
+    "dtype": "bfloat16",
+    "warmup_excluded": true,
+    "timing": "Synchronized per-request wall time, including input processing; not a serving benchmark."
+  },
+  "sources": {
+    "snake": "Synthetic Snake trajectories",
+    "mario": "OpenGenGAME Super Mario Bros recordings",
+    "arcade": "JAT Atari recordings: Enduro, Skiing, Pong",
+    "board": "Chess positions and synthetic Gomoku trajectories",
+    "phone": "AndroidControl",
+    "web": "Mind2Web official test-task split",
+    "robot": "Bridge robot recordings",
+    "video": "Charades event frames"
+  }
+}
