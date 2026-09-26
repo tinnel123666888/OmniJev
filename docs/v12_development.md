@@ -29,6 +29,8 @@ buttons = system(game_state, mode="choice", action_space="Mario-Pygame-1-1",
 
 The sidecar requires its saved normalization and exact input schema. It is not part of the v1.1 weight download.
 
+[Every action dataset/environment: offline scores, baselines, calibration and missing coverage](v12_action_scores.md).
+
 ## Expanded data
 
 These are collected/converted records **before exact-observation deduplication**, not independent successful model executions.
@@ -59,8 +61,31 @@ Sources: [HighwayEnv](https://highway-env.farama.org/), [Fetch environments](htt
 
 The first 8-device MLU590 run trained a frozen-backbone sidecar on a 10,331-state development bundle for 1,600 optimizer steps. It produced a real candidate checkpoint while preserving all v1.1 checkpoint file hashes. Its offline action results were insufficient for release; for example, Pygame Mario action accuracy was 28.13% on 64 sampled states, and some grid/driving results failed simple baseline comparisons. This score is not comparable to the old NES Mario row.
 
-The expanded second bundle contains 44,046 states, with a 16,000-step continuation prepared from the first action checkpoint. Domain-specific train-only normalization is retained when continuing an existing head; rare discrete actions receive inverse-square-root frequency sampling. Previously inspected offline holdouts are identified as development data, not a new untouched final test.
+The expanded second bundle contains 44,046 states, with a 16,000-step continuation running on eight A800 GPUs from the first action checkpoint. [Per-domain split counts and deduplication manifest](v12_data_manifest_stage2.json). Domain-specific train-only normalization is retained when continuing an existing head; rare discrete actions receive inverse-square-root frequency sampling. Previously inspected offline holdouts are identified as development data, not a new untouched final test.
 
 Release requires paired general-route checks on the same questions, per-dataset coverage and question counts, calibration statistics for choices, and real closed-loop outcomes on fresh simulator episodes. Model rollouts must be compared with fixed-action baselines. A stopped simulator waiting for inference does not establish real-time control. A failed candidate does not replace v1.1 or justify a new capability claim.
 
 The stage-one general-route integration check passed on **152 states / 393 questions / 19 source subsets**. Returned answers, probabilities and confidence matched before and after calling the action sidecar; maximum returned-value difference was **0**. Only the two latency fields were excluded. The existing API rounds its returned probabilities, so this is an equality check at the API's output precision. [Per-subset regression results](v12_general_regression_stage1.json).
+
+## Stage-one closed-loop results: release gate failed
+
+All **104 planned model episodes** and their matched fixed-action baselines completed. No failed episodes were dropped. These are actual simulator rollouts, unlike the v1.1 offline replay demonstrations. [All episode results, success definitions, Wilson intervals and measured latency](v12_closed_loop_stage1.json).
+
+| Environment | Model successes / episodes | Fixed-action baseline |
+| --- | ---: | ---: |
+| FetchReach | 6 / 16 | 1 / 16 |
+| FetchPush | 1 / 16 | 1 / 16 |
+| FetchPickAndPlace | 0 / 16 | 0 / 16 |
+| Highway | 0 / 8 | 5 / 8 |
+| Dense highway | 0 / 8 | 4 / 8 |
+| MiniGrid DoorKey 6x6 | 0 / 8 | 0 / 8 |
+| MiniGrid DoorKey 8x8 | 0 / 8 | 0 / 8 |
+| MiniGrid FourRooms | 0 / 8 | 0 / 8 |
+| MiniGrid LavaGap S7 | 0 / 8 | 0 / 8 |
+| Pygame Mario 1-1 | 0 / 8 | 0 / 8 |
+
+The baseline is zero robot commands, zero steering/acceleration, always-forward grid movement, or always-right-and-run Mario input. Driving success requires a full 80-step run, no collision or departure from the road, and mean speed at least 12.5 m/s. Mario uses one fixed map with eight initial delays, not eight independent levels. The model stalled without forward progress in all eight Mario runs. Fetch includes privileged simulator object/goal state, so even its limited success does not establish vision-only manipulation.
+
+## NES Mario data collection
+
+A separate emulator-lookahead teacher completed NES Mario 1-1 at nine initial delays, producing 1,305 pre-action records. The same teacher failed the tested 1-2, 1-3 and 2-1 runs. Failed trajectories are retained for diagnosis and excluded from successful-imitation data. These are **teacher outcomes, not OmniJev outcomes**; the nine starts share one fixed map and largely the same path. This pilot is not part of the already sealed stage-two training bundle, and does not establish cross-level gameplay.
