@@ -20,8 +20,6 @@
 
 ## What it can do
 
-**v1.2 development:** [continuous/discrete action heads, expanded data and measured limitations](docs/v12_development.md). The first candidate failed the closed-loop release gate; v1.1 remains the released model.
-
 OmniJev fine-tunes Qwen3.5 vision-language backbones with LoRA, decision heads and an ordinal head. v1.1 covers web and phone operation, robot scenes, video, games, board games, audio spectrograms and text. The current training manifest is still being audited; the earlier 270,000-record figure is not an exact count for this release.
 
 A 4B model that answers decision questions about images, video, phone and computer screens, games and robot scenes. The released demonstrations are offline replays; reliable closed-loop gameplay and robot control have not been established. It reads the picture together with your question and any text context, answers with **calibrated probabilities** instead of generated text, and can say *none of the above*.
