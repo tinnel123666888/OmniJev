@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MSO v0.1 inference: a Jev-compatible `system_one(state, questions)` over the trained checkpoint.
+"""OmniJev inference: a Jev-compatible `system_one(state, questions)` over the trained checkpoint.
 
 Contract (mirrors TypeSafe's POST /v1/systemone answers, plus our two additions):
     noul    -> {"noul": P(yes)}
@@ -9,20 +9,21 @@ Contract (mirrors TypeSafe's POST /v1/systemone answers, plus our two additions)
   confidence = (K*p_max - 1)/(K - 1), Jev's definition.
   An option may be {"text": ...} or {"region": {"box": [x1,y1,x2,y2]}} (0-1000)  # region options are ours
 
-The model never generates text: one forward pass per question, zero output tokens.
-(v0.1 packs the options of one question into one sequence; packing several questions
-behind one shared state is designed and unit-tested but not yet wired into training.)
+The model returns probabilities without generating text. The Qwen3.5 branch path
+shares the state prefix across question/option continuations.
 
 CLI demo:
-  python mso/infer.py --ckpt <ckpt_dir> --model <base> --image img.jpg \
+  python -m mso.infer --ckpt <ckpt_dir> --model <base> --image img.jpg \
      --questions '{"q1":{"type":"noul","instructions":"There is a cat."},
                    "q2":{"type":"choice","instructions":"Which animal?","criteria":{"cat":null,"dog":null}}}'
 """
 import argparse
 import json
+import math
 import os
 import sys
 import time
+import tempfile
 
 import torch
 
@@ -31,6 +32,8 @@ import mso.records as T
 from mso import v04 as V4                                              # noqa: E402
 from mso import branch as BR                                           # noqa: E402
 from mso.head import choice_outputs, jev_confidence               # noqa: E402
+from mso import panels
+PANEL_DIR = os.environ.get("MSO_PANELS") or os.path.join(tempfile.gettempdir(), "mso_panels")
 
 
 class MSO1:
@@ -67,6 +70,15 @@ class MSO1:
         self.temp = float(json.load(open(meta_p)).get("temperature", 1.0)) if os.path.exists(meta_p) else 1.0
         _tt = (json.load(open(meta_p)).get("temperatures") or {}) if os.path.exists(meta_p) else {}
         self.temps = {k: float(_tt.get(k, self.temp)) for k in ("noul", "choice", "score")}
+        # a shift of the log-odds, which is the only thing that can move a yes/no decision boundary; see _finish
+        _bb = (json.load(open(meta_p)).get("biases") or {}) if os.path.exists(meta_p) else {}
+        # only yes/no has a boundary a bias can move; loading one for choice or score would promise an effect the
+        # renormalised softmax does not have, so it is deliberately not read
+        _stray = [k for k in _bb if k != "noul"]
+        if _stray:                                   # writing one and seeing nothing happen costs hours to diagnose
+            raise ValueError("head_meta.json has biases for %s, but only noul has a boundary a bias can move; "
+                             "a renormalised softmax over several options is unchanged by a constant" % ", ".join(sorted(_stray)))
+        self.biases = {"noul": float(_bb.get("noul", 0.0))}
         meta = json.load(open(meta_p)) if os.path.exists(meta_p) else {}
         self.lm_feats = bool(meta.get("lm_feats"))
         self.ordinal = bool(meta.get("ordinal"))
@@ -220,7 +232,13 @@ class MSO1:
 
     def _finish(self, q, keys, opts, mu, lat):
         if q["type"] == "noul":
-            p = self._scale([float(mu[0]), 1.0 - float(mu[0])], "noul")[0]
+            p0 = float(mu[0])
+            b = self.biases.get("noul", 0.0)
+            if b:                                    # temperature cannot move the 0.5 crossing; this can
+                p0 = min(max(p0, 1e-9), 1.0 - 1e-9)
+                z = max(-40.0, min(40.0, math.log(p0 / (1.0 - p0)) + b))
+                p0 = 1.0 / (1.0 + math.exp(-z))
+            p = self._scale([p0, 1.0 - p0], "noul")[0]
             return {"noul": round(p, 4), "latency_s": round(lat, 4)}
         co = choice_outputs(mu, allow_abstain=(q["type"] == "choice"))
         full = self._scale([float(x) for x in co.probs] + [float(co.abstain)], q["type"])
@@ -349,11 +367,18 @@ class MSO1:
         return res
 
     def system_one(self, state, questions, packed=True):
-        """state: {"images": [path], "video": {n_frames, cols, tile, timestamps, duration}?}
-        questions: {id: question} -> {id: answer}. With `video`, images[0] is the 4x4 frame mosaic.
+        """state: {"images": [path, ...], "video": {n_frames, cols, tile, timestamps, duration}?}
+        questions: {id: question} -> {id: answer}.
+
+        The model encodes exactly one image per request. Several stills are tiled into a single numbered panel in
+        reading order, so a question may refer to "the second picture"; up to and including v1.0 the extra images
+        were accepted and then silently dropped, which made such questions unanswerable. Set MSO_NO_PANELS=1 to
+        restore that older behaviour, which is what the published v0.8 numbers were measured under.
+        With `video`, images[0] is already the 4x4 frame mosaic and is passed through untouched.
         packed=True answers every question in one forward (state encoded once)."""
-        img = state["images"][0]
         video = state.get("video")
+        _ims = state["images"]
+        img = panels.compose_path(_ims, PANEL_DIR) if (len(_ims) > 1 and not video) else _ims[0]
         if self.branch:
             return self.ask_branch(img, video, questions)
         if packed and questions:

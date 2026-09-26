@@ -20,7 +20,7 @@
 
 ## What it can do
 
-OmniJev is a model we trained end to end — not the Jev API with somebody else's model behind it. About **270,000 decision records and 1.3 million typed questions** across web and phone operation, robot episodes (simulated and real), video events, real-time games, gestures, hazards and sounds.
+OmniJev fine-tunes Qwen3.5 vision-language backbones with LoRA, decision heads and an ordinal head. v1.1 covers web and phone operation, robot scenes, video, games, board games, audio spectrograms and text. The current training manifest is still being audited; the earlier 270,000-record figure is not an exact count for this release.
 
 A 4B model that **sees images and video** and makes decisions about them: **operate phones and computers**, **play games in real time**, **control robots**, **monitor camera feeds** (hazards, gestures, events). It reads the picture together with your question and any text context, answers with **calibrated probabilities** instead of generated text, and can say *none of the above*.
 
@@ -42,15 +42,19 @@ Three sizes, one code base (`mso.infer`), one API, all Apache-2.0, all on Qwen3.
 
 | model | backbone | weights | download |
 |---|---|---|---|
-| **OmniJev-4B** | Qwen3.5-4B | [tinnel123/OmniJev](https://huggingface.co/tinnel123/OmniJev) · mirror [tinnel123/OmniJev-4B](https://huggingface.co/tinnel123/OmniJev-4B) | `hf download tinnel123/OmniJev --local-dir ckpt` · `hf download Qwen/Qwen3.5-4B --local-dir base` |
-| **OmniJev-2B** | Qwen3.5-2B | [tinnel123/OmniJev-2B](https://huggingface.co/tinnel123/OmniJev-2B) | `hf download tinnel123/OmniJev-2B --local-dir ckpt` · `hf download Qwen/Qwen3.5-2B --local-dir base` |
-| **OmniJev-0.8B** | Qwen3.5-0.8B | [tinnel123/OmniJev-0.8B](https://huggingface.co/tinnel123/OmniJev-0.8B) | `hf download tinnel123/OmniJev-0.8B --local-dir ckpt` · `hf download Qwen/Qwen3.5-0.8B --local-dir base` |
+| **OmniJev-4B** | Qwen3.5-4B | [tinnel123/OmniJev](https://huggingface.co/tinnel123/OmniJev) · mirror [tinnel123/OmniJev-4B](https://huggingface.co/tinnel123/OmniJev-4B) | `hf download tinnel123/OmniJev --revision v1.1 --local-dir ckpt` · `hf download Qwen/Qwen3.5-4B --local-dir base` |
+| **OmniJev-2B** | Qwen3.5-2B | [tinnel123/OmniJev-2B](https://huggingface.co/tinnel123/OmniJev-2B) | `hf download tinnel123/OmniJev-2B --revision v1.1 --local-dir ckpt` · `hf download Qwen/Qwen3.5-2B --local-dir base` |
+| **OmniJev-0.8B** | Qwen3.5-0.8B | [tinnel123/OmniJev-0.8B](https://huggingface.co/tinnel123/OmniJev-0.8B) | `hf download tinnel123/OmniJev-0.8B --revision v1.1 --local-dir ckpt` · `hf download Qwen/Qwen3.5-0.8B --local-dir base` |
+
+The separate generative SFT baseline is [tinnel123/OmniJev-SFT-0.8B](https://huggingface.co/tinnel123/OmniJev-SFT-0.8B). It uses PEFT text generation rather than `MSO1`.
 
 Every example below works for all three: `MSO1("ckpt", "base")` picks the right path from the checkpoint. `pip install fla-core` is optional and turns on the fast linear-attention kernels.
 
+Download all four weight packages and SHA-256 checksums from the [GitHub v1.1 release](https://github.com/tinnel123666888/OmniJev/releases/tag/v1.1).
+
 ## What it does
 
-Every clip below is a held-out episode the model never saw; every clock is a measured latency.
+The clips below illustrate tasks and the interface using historical releases. They are not newly generated v1.1 demonstrations or latency measurements.
 
 <table>
 <tr>
@@ -82,50 +86,95 @@ Every clip below is a held-out episode the model never saw; every clock is a mea
 </tr>
 </table>
 
-## Results
+## Results — v1.1, 2026-09-26
 
-Held-out accuracy of **OmniJev-4B** (Qwen3.5-4B) on the exact serving path, next to its own backbone answering the same questions zero-shot, the released **OmniJev-2B** and **OmniJev-0.8B**, and a **plain-SFT baseline** — the same 0.8B backbone fine-tuned the ordinary way to write the answer as text, scored by an LLM judge, shown for the five families it was trained on. ECE is the calibration error of OmniJev-4B with the served temperatures.
+[Full per-family metrics and counts](docs/results_v11_zh.md) · [Aggregate source reports](docs/results_v11.json) · [Release manifest](docs/release_v11.json)
 
-| benchmark (held-out) | n | 0.8B zero-shot | 0.8B plain SFT | OmniJev-0.8B | OmniJev-2B | 4B zero-shot | OmniJev-4B | ECE ↓ |
-|---|---|---|---|---|---|---|---|---|
-| LIBERO-10 robot decisions | 1504 | 0.551 | 0.247 | 0.771 | 0.724 | 0.299 | **0.807** | 0.031 |
-| Mind2Web test (task / website / domain) | 1500 | 0.401 | 0.193 | 0.596 | 0.631 | 0.303 | **0.733** | 0.038 |
-| Grid pointing, 96 cells (web) | 1500 | 0.384 | – | 0.474 | 0.625 | 0.421 | **0.737** | 0.021 |
-| Self-built event-timing questions (videos from the Charades-STA training set) | 1500 | 0.390 | 0.363 | 0.811 | 0.826 | 0.543 | **0.859** | 0.021 |
-| Catch game frames | 1504 | 0.409 | 0.383 | 0.661 | 0.728 | 0.151 | **0.870** | 0.016 |
-| HaGRID gestures + fire/smoke/weapons | 1500 | 0.529 | 0.620 | 0.969 | 0.984 | 0.683 | **0.987** | 0.009 |
-| OK-VQA answer pool | 1500 | 0.793 | – | 0.656 | 0.765 | **0.860** | 0.809 | 0.021 |
-| LongVideoBench val | 500 | 0.410 | – | 0.486 | 0.502 | **0.585** | 0.582 | 0.073 |
-| Long video / planning / spatial | 1511 | 0.390 | – | 0.494 | 0.529 | 0.486 | **0.602** | 0.072 |
-| Mixed decision set (self-built): regions, existence, phone, chess, short video | 1491 | 0.545 | – | 0.604 | 0.623 | 0.582 | **0.661** | 0.079 |
-| Wiki navigation | 1500 | 0.414 | – | 0.659 | 0.667 | 0.336 | **0.706** | 0.030 |
-| Real-robot MUTEX | 1500 | 0.442 | – | 0.681 | 0.687 | 0.267 | **0.749** | 0.022 |
-| Atari human play | 1500 | – | – | **0.707** | 0.691 | 0.332 | 0.703 | 0.040 |
-| Snake | 1500 | – | – | 0.727 | 0.763 | 0.449 | **0.833** | 0.048 |
-| Gomoku | 1500 | – | – | 0.694 | 0.669 | 0.154 | **0.696** | 0.021 |
-| Chess (local candidate moves) | 1500 | – | – | 0.603 | 0.609 | 0.166 | **0.611** | 0.051 |
-| AndroidControl phone operation | 1502 | – | – | 0.634 | 0.668 | 0.291 | **0.734** | 0.037 |
-| ESC-50 sounds (spectrogram) | 795 | – | – | 0.473 | 0.514 | 0.347 | **0.525** | 0.051 |
-| RoboArena real-robot rollouts | 1503 | – | – | – | – | 0.336 | **0.628** | 0.019 |
-| JAT racing / paddle games (Enduro, Skiing, Pong) | 1500 | – | – | – | – | 0.259 | **0.589** | 0.061 |
-| Super Mario Bros | 735 | – | – | – | – | **0.464** | 0.339 | 0.184 |
-| POPE object hallucination (yes/no) | 9000 | – | – | – | – | 0.867 | **0.902** | 0.007 |
+### Overview: 30 common families
 
-**How to read the two columns.** POPE and LongVideoBench are held out completely: no data from either ever entered training, so the gap there is generalisation. Mind2Web uses the dataset's own train split for training and its official test splits here. Every other row is a question pool we built ourselves, with 8 % of the rows held out by a hash of the row id. The backbone column is zero-shot on all of them, so outside the first two rows the gap measures what training on that family buys, not a like-for-like benchmark.
+Macro accuracy gives each family equal weight; micro accuracy weights each report by its own question count. Mean family ECE is an average of per-family ECE values, not pooled ECE.
 
-**Three rows were measured on an incomplete input.** RoboArena, JAT and Super Mario Bros come from families whose records carry more than one still, and until now the serving path encoded only the first of them, so those questions were in effect answered from a single frame. The fix and re-measured numbers ship together in the next release; we are leaving the figures above as they were measured rather than quietly restating them.
+| Model | Families | Questions | Macro accuracy % | Micro accuracy % | Mean family ECE % ↓ |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Base 0.8B | 30 | 21,456 | 40.07 | 40.04 | 20.83 |
+| SFT 0.8B | 30 | 41,951 | 47.86 | 48.09 | — |
+| v1.1 0.8B | 30 | 41,975 | 64.52 | 65.40 | 4.30 |
+| Base 2B | 30 | 21,456 | 36.30 | 35.94 | 34.21 |
+| v1.1 2B | 30 | 41,975 | 64.46 | 65.42 | 6.27 |
+| Base 4B | 30 | 21,456 | 40.12 | 39.79 | 30.04 |
+| v1.1 4B | 30 | 41,975 | 70.00 | 70.82 | 5.89 |
 
-**ECE** (expected calibration error) says whether the probabilities can be trusted: it is the average gap between the confidence the model states and how often it is actually right. An ECE of 0.05 means that when the model says "90 %" it is right about 85–95 % of the time; 0 would be perfect, and lower is better. A generative model that only prints an answer has no such number. The values above use the temperatures shipped in `head_meta.json`.
+### All families: accuracy (%)
 
-**Latency** (one idle NVIDIA A800-SXM4-40GB, the serving path, a 768-token image budget, all questions about the same image in one request; median of 12 runs, same card and same script for all three: `bench/speed_bench.py`, 12 fixed questions on one image):
+| Family | Base 0.8B | SFT 0.8B | v1.1 0.8B | Base 2B | v1.1 2B | Base 4B | v1.1 4B |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| androidcontrol | 29.49 | 40.73 | 71.70 | 21.54 | 71.84 | 28.81 | 77.30 |
+| atari | 45.68 | 45.07 | 71.67 | 7.82 | 63.40 | 34.29 | 63.87 |
+| audio | 20.71 | 44.53 | 51.07 | 35.39 | 42.01 | 34.16 | 53.08 |
+| chess2 | 24.01 | 38.93 | 61.80 | 20.99 | 61.67 | 16.74 | 62.40 |
+| chess3 | 5.62 | 13.00 | 20.00 | 6.17 | 15.13 | 5.49 | 22.67 |
+| events | 39.09 | 48.53 | 85.87 | 48.56 | 86.47 | 55.56 | 89.13 |
+| game | 41.15 | 47.33 | 83.51 | 17.15 | 80.32 | 15.36 | 90.36 |
+| genmcq | 57.06 | 79.87 | 77.60 | 60.08 | 83.80 | 73.25 | 88.20 |
+| gomoku | 52.54 | 45.67 | 69.80 | 18.24 | 68.27 | 16.60 | 70.60 |
+| jat | 36.90 | 50.33 | 63.73 | 27.71 | 63.00 | 25.79 | 65.87 |
+| jog_bridge | 28.12 | 28.80 | 43.84 | 24.14 | 48.43 | 29.36 | 45.97 |
+| jog_full | 24.69 | 27.60 | 49.24 | 32.24 | 49.04 | 28.26 | 51.56 |
+| longtext | 21.26 | 62.53 | 76.42 | 36.21 | 77.68 | 59.40 | 80.28 |
+| lvb | 41.80 | 52.60 | 47.20 | 57.38 | 50.00 | 59.02 | 56.80 |
+| mario | 27.43 | 40.14 | 53.88 | 52.13 | 54.69 | 46.78 | 56.05 |
+| music | 34.98 | — | — | 32.92 | — | 34.71 | — |
+| mutex | 47.33 | 50.73 | 73.33 | 25.10 | 70.73 | 25.24 | 79.07 |
+| old | 53.91 | 61.60 | 67.54 | 58.44 | 66.06 | 58.02 | 70.76 |
+| pilot_web | 39.51 | 37.20 | 67.13 | 37.04 | 66.47 | 42.80 | 75.80 |
+| point_phone | 40.27 | 37.68 | 60.91 | 39.09 | 60.69 | 46.61 | 72.53 |
+| pope | 85.46 | 84.20 | 66.73 | 82.44 | 66.87 | 86.42 | 84.73 |
+| roboarena_wrist | 38.55 | 55.87 | 65.93 | 32.92 | 66.27 | 33.20 | 67.80 |
+| robot_long | 54.87 | 49.80 | 79.79 | 29.77 | 78.46 | 29.36 | 85.04 |
+| safety | 52.81 | 68.93 | 97.73 | 58.44 | 99.07 | 67.90 | 99.53 |
+| snake | 44.03 | 47.00 | 83.60 | 34.57 | 82.87 | 44.86 | 84.47 |
+| video | 39.09 | 43.47 | 57.51 | 38.41 | 59.10 | 49.11 | 62.81 |
+| vqa | 79.15 | 76.47 | 63.87 | 83.26 | 79.60 | 85.73 | 93.47 |
+| web | 41.02 | 48.27 | 66.87 | 31.55 | 67.53 | 31.28 | 76.80 |
+| webtest | 40.47 | 48.40 | 67.13 | 26.20 | 67.87 | 30.45 | 77.40 |
+| wiki | 41.84 | 47.80 | 68.00 | 39.78 | 68.53 | 33.74 | 72.13 |
+| xiangqi | 8.09 | 12.87 | 22.27 | 6.31 | 18.07 | 10.15 | 23.67 |
 
-| model | 1 question | 3 questions | 6 questions | 12 questions | per question (12) |
-|---|---|---|---|---|---|
-| OmniJev-4B | 294 ms | 292 ms | 344 ms | 436 ms | 36.3 ms |
-| OmniJev-2B | 217 ms | 220 ms | 243 ms | 277 ms | 23.1 ms |
-| OmniJev-0.8B | 216 ms | 216 ms | 218 ms | 236 ms | 19.6 ms |
+### Evaluation protocol and limitations
 
-All three are Qwen3.5 backbones on the same prefix-branch path, so latency grows with size (216 ms → 294 ms for one question). Packing several questions into one request drops the cost per question from 294 ms to 36.3 ms, because the image is encoded once. This is the first time all three rows were measured on one card; the numbers this page carried before came from different hardware and were not comparable row to row.
+The table reports existing evaluations, **not a matched-sample ablation**. Base models use candidate-answer probabilities (`A1_raw`), with at most 1,000 questions per family before dev/test splitting. OmniJev and SFT typically use about 1,500 questions per family. Sampling, option truncation and image inputs differ. The 30-family summary excludes music, for which only base results exist.
+
+The released SFT baseline is 0.8B only. Its 41,951 generations were judged and audited: 97 incorrect explicit answer labels were accepted by the raw LLM judge. Audited accuracy is **48.0894%** (equal to the parser), rather than the uncorrected judge's 48.3207%.
+
+v1.1 OmniJev uses numbered multi-image panels. The historical SFT and base evaluations used the first still image only. Multi-image SFT retraining and inference over the newly frozen 272,561-question set are **not completed**. The 20-step distributed smoke checkpoint is not part of this release.
+
+These are project evaluation families, not uniform official benchmark scores. POPE and LongVideoBench were excluded from training; Mind2Web uses official splits. Other families include custom row-level holdouts; the event-timing family uses videos from the Charades-STA training set. Row-level exclusion does not establish episode-level separation.
+
+The main table contains raw evaluation reports, **not a new evaluation of the calibrated serving outputs**. Released temperature metadata comes from a separate calibration split. The 4B checkpoint also contains `biases.noul=0.0531085661`, which moves the yes/no boundary; therefore its raw POPE result must not be restated as a serving-path result.
+
+4B has the highest 30-family macro accuracy, but POPE (84.73% vs 86.42% base) and LVB (56.80% vs 59.02% base) remain lower. The 0.8B and 2B models also have substantial POPE regressions. All rows are retained.
+
+### Calibration
+
+ECE measures the average confidence–accuracy gap across bins; lower is better. It does not guarantee that every individual confidence level is within that gap. Brier score and NLL are also reported in the full results. Generative SFT reports did not retain calibrated answer probabilities, so its ECE is unavailable.
+
+The independent calibration set has 7,767 dev and 17,754 test questions. Temperature scaling preserves argmax accuracy; the additional 4B yes/no bias can change it. Calibration metadata reports temperature-only results.
+
+| Size | Type | n | Temperature | Accuracy % | Raw ECE % | Calibrated ECE % | Raw Brier | Calibrated Brier | Raw NLL | Calibrated NLL |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 0.8B | noul | 5566 | 0.9574 | 86.58 | 1.94 | 1.33 | 0.1862 | 0.1864 | 0.2962 | 0.2961 |
+| 0.8B | choice | 9226 | 0.9983 | 52.92 | 1.34 | 1.39 | 0.5512 | 0.5512 | 1.3374 | 1.3374 |
+| 0.8B | score | 2962 | 1.0642 | 66.41 | 3.15 | 2.90 | 0.4266 | 0.4270 | 0.7694 | 0.7712 |
+| 2B | noul | 5566 | 1.0181 | 86.74 | 0.93 | 0.89 | 0.1881 | 0.1881 | 0.3012 | 0.3010 |
+| 2B | choice | 9226 | 1.1253 | 51.08 | 1.60 | 2.31 | 0.5612 | 0.5613 | 1.4139 | 1.4123 |
+| 2B | score | 2962 | 1.0173 | 64.28 | 3.11 | 3.21 | 0.4507 | 0.4510 | 0.8170 | 0.8178 |
+| 4B | noul | 5566 | 1.1991 | 89.17 | 2.35 | 1.00 | 0.1545 | 0.1530 | 0.2524 | 0.2484 |
+| 4B | choice | 9226 | 1.1199 | 56.33 | 2.20 | 1.44 | 0.5155 | 0.5153 | 1.2547 | 1.2517 |
+| 4B | score | 2962 | 1.1909 | 66.91 | 5.24 | 3.42 | 0.4260 | 0.4221 | 0.7504 | 0.7445 |
+
+### Latency
+
+The previous release measured 1/3/6/12-question requests on one idle A800-SXM4-40GB: 4B 294/292/344/436 ms; 2B 217/220/243/277 ms; 0.8B 216/216/218/236 ms. These are historical measurements, not new v1.1 serving benchmarks. The v1.1 source reports contain per-family latency, but do not form a controlled hardware-matched speed comparison. All Qwen3.5 sizes use the prefix-branch path.
 
 ## Quick start
 
@@ -133,7 +182,7 @@ All three are Qwen3.5 backbones on the same prefix-branch path, so latency grows
 git clone https://github.com/tinnel123666888/OmniJev && cd OmniJev
 python -m venv venv && ./venv/bin/pip install -r requirements.txt     # torch, transformers>=5, pillow
 
-hf download tinnel123/OmniJev --local-dir ckpt                       # the OmniJev weights
+hf download tinnel123/OmniJev --revision v1.1 --local-dir ckpt                       # the OmniJev weights
 hf download Qwen/Qwen3.5-4B --local-dir base               # the backbone (or symlink a local copy)
 ```
 
@@ -184,7 +233,9 @@ answers = m.system_one(
 
 ## How it was trained
 
-OmniJev starts from an open 4B vision-language model (Qwen3.5-4B) and is trained by us end to end to *decide* instead of *write*: a small decision layer reads the answer to every question straight off the model's probabilities, so nothing is generated and nothing can go off-schema. The training set is **about 270,000 decision records and 1.3 million typed questions** built from public datasets and our own renders — web and phone operation, robot episodes and real-robot rollouts, real-time and board games, everyday-action and long video, gestures and hazards, and sounds drawn as spectrograms — and every number we publish is measured on held-out rows the model never saw. Training is a supervised stage under **proper scoring rules**, which reward probabilities that are not only right but honest about their uncertainty; a final calibration on held-out data is what makes a threshold such as "act only above 0.8" meaningful. The options are shown to the model in a way that makes the answer independent of their order. Weights: [`tinnel123/OmniJev`](https://huggingface.co/tinnel123/OmniJev) (~290 MB on top of the backbone).
+v1.1 uses Qwen3.5 0.8B, 2B and 4B backbones with rank-32 LoRA, decision and ordinal heads, LM features, prefix-branch inference and multi-image panels. This continuation trained for 5,000 / 4,000 / 3,000 steps respectively. Earlier curricula differ across sizes, so these are not equal cumulative training budgets. Training uses probabilistic scoring rules, followed by temperature calibration on a separate holdout.
+
+The 0.8B generative SFT baseline trained for 12,500 steps, learning rate 1e-4 and accumulation 4. It generates answer text, has no OmniJev decision heads and does not use `MSO1`. Its historical training path reads the first still image only. Training record manifests and cumulative budgets are not aligned enough to call this a strict same-data comparison.
 
 ## License and citation
 

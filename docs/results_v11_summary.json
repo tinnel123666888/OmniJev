@@ -1,0 +1,137 @@
+{
+  "summary": [
+    {
+      "model": "base_0.8B",
+      "families": 30,
+      "n": 21456,
+      "macro_acc": 0.40065300868172987,
+      "micro_acc": 0.4003542132736764,
+      "macro_ece": 0.20827566091723695,
+      "macro_brier": 0.7268557275998792,
+      "macro_nll": 1.6190677445903245
+    },
+    {
+      "model": "sft_0.8B",
+      "families": 30,
+      "n": 41951,
+      "macro_acc": 0.4786469316540662,
+      "micro_acc": 0.4808943767729017,
+      "macro_ece": null,
+      "macro_brier": null,
+      "macro_nll": null
+    },
+    {
+      "model": "mso_0.8B",
+      "families": 30,
+      "n": 41975,
+      "macro_acc": 0.64522312930666,
+      "micro_acc": 0.6540321620011912,
+      "macro_ece": 0.04302576167783698,
+      "macro_brier": 0.4367165555701787,
+      "macro_nll": 0.9257128998660941
+    },
+    {
+      "model": "base_2B",
+      "families": 30,
+      "n": 21456,
+      "macro_acc": 0.3630183958318781,
+      "micro_acc": 0.35938665175242357,
+      "macro_ece": 0.34210051376005457,
+      "macro_brier": 0.9102998825861641,
+      "macro_nll": 2.121828117009811
+    },
+    {
+      "model": "mso_2B",
+      "families": 30,
+      "n": 41975,
+      "macro_acc": 0.6446443406878105,
+      "micro_acc": 0.6541512805241215,
+      "macro_ece": 0.06274761127110658,
+      "macro_brier": 0.4403569595957028,
+      "macro_nll": 0.9985937807589945
+    },
+    {
+      "model": "base_4B",
+      "families": 30,
+      "n": 21456,
+      "macro_acc": 0.40123454136722203,
+      "micro_acc": 0.3978840417598807,
+      "macro_ece": 0.3003628344531868,
+      "macro_brier": 0.8188989569853421,
+      "macro_nll": 1.7978822997385313
+    },
+    {
+      "model": "mso_4B",
+      "families": 30,
+      "n": 41975,
+      "macro_acc": 0.7000440597020517,
+      "micro_acc": 0.7082072662298987,
+      "macro_ece": 0.05894607177523527,
+      "macro_brier": 0.3821421747972403,
+      "macro_nll": 0.8541533666562886
+    }
+  ],
+  "deltas": [
+    [
+      "v1.1 0.8B − 基模 0.8B",
+      "24.46",
+      28,
+      2,
+      0
+    ],
+    [
+      "v1.1 2B − 基模 2B",
+      "28.16",
+      27,
+      3,
+      0
+    ],
+    [
+      "v1.1 4B − 基模 4B",
+      "29.88",
+      28,
+      2,
+      0
+    ],
+    [
+      "v1.1 0.8B − SFT 0.8B",
+      "16.66",
+      26,
+      4,
+      0
+    ]
+  ],
+  "common_families": [
+    "androidcontrol",
+    "atari",
+    "audio",
+    "chess2",
+    "chess3",
+    "events",
+    "game",
+    "genmcq",
+    "gomoku",
+    "jat",
+    "jog_bridge",
+    "jog_full",
+    "longtext",
+    "lvb",
+    "mario",
+    "mutex",
+    "old",
+    "pilot_web",
+    "point_phone",
+    "pope",
+    "roboarena_wrist",
+    "robot_long",
+    "safety",
+    "snake",
+    "video",
+    "vqa",
+    "web",
+    "webtest",
+    "wiki",
+    "xiangqi"
+  ],
+  "snapshot_time": "2026-09-26T09:45:59.022646"
+}

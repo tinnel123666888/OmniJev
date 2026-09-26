@@ -1,0 +1,271 @@
+{
+  "release": "v1.1",
+  "date": "2026-09-26",
+  "models": [
+    {
+      "name": "OmniJev",
+      "repo_id": "tinnel123/OmniJev",
+      "base_model": "Qwen/Qwen3.5-4B",
+      "previous_revision": "6a8bbb1a9fb2a0311f8068e197e6fc33a2156f3c",
+      "files": {
+        "tokenizer.json": {
+          "bytes": 19989712,
+          "sha256": "2f838eae798ef282bfcbbeb01645e728680e9b8b493ef3e0c63ff2d9ed28a8c4"
+        },
+        "ord.pt": {
+          "bytes": 10497109,
+          "sha256": "38c8e1bdb23f8ccd915dba75e05596d36fe2896f95c984166fc3713a027f5b68"
+        },
+        "adapter_config.json": {
+          "bytes": 1269,
+          "sha256": "0686ea535f56ee7733d29a861c2b0a498ac48c32c13b9a737c7322709e6851e5"
+        },
+        "tokenizer_config.json": {
+          "bytes": 1226,
+          "sha256": "feaa62c900dd7ec96738aa38df18eef2fac49269a987947a22f157cd70fe7bc3"
+        },
+        "head_meta.json": {
+          "bytes": 1061,
+          "sha256": "d184edd664ad85bbbb782157a8965db33c36d4a144d8b781d19f5c11cd2778ee"
+        },
+        "head.pt": {
+          "bytes": 29418795,
+          "sha256": "7b801a1901040e70559deb74eadb11709540ff65ef926213ecf881e4f4070320"
+        },
+        "processor_config.json": {
+          "bytes": 1189,
+          "sha256": "bcbca4244c9b61672113167b05f159dc8a33741661ef7b1fc72bf6812a770bcc"
+        },
+        "new_tok_emb.pt": {
+          "bytes": 22085,
+          "sha256": "cd78e3440c03c7ace689ddb3b05f860c5cc59b710a8202cbc8f8252de1cd18de"
+        },
+        "chat_template.jinja": {
+          "bytes": 7756,
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 243854336,
+          "sha256": "96247914d7e2e68a7124c35c49393267c2beb98769d096f5172ed0043851f0f0"
+        }
+      },
+      "training_steps_this_stage": 3000,
+      "published_revision": "ffe5f436eaf22e20e2f041f8e74e121fd057a6cb",
+      "tag": "v1.1"
+    },
+    {
+      "name": "OmniJev-4B",
+      "repo_id": "tinnel123/OmniJev-4B",
+      "base_model": "Qwen/Qwen3.5-4B",
+      "previous_revision": "56bcb497b90bb94153b536cab51f5ee45e898370",
+      "files": {
+        "tokenizer.json": {
+          "bytes": 19989712,
+          "sha256": "2f838eae798ef282bfcbbeb01645e728680e9b8b493ef3e0c63ff2d9ed28a8c4"
+        },
+        "ord.pt": {
+          "bytes": 10497109,
+          "sha256": "38c8e1bdb23f8ccd915dba75e05596d36fe2896f95c984166fc3713a027f5b68"
+        },
+        "adapter_config.json": {
+          "bytes": 1269,
+          "sha256": "0686ea535f56ee7733d29a861c2b0a498ac48c32c13b9a737c7322709e6851e5"
+        },
+        "tokenizer_config.json": {
+          "bytes": 1226,
+          "sha256": "feaa62c900dd7ec96738aa38df18eef2fac49269a987947a22f157cd70fe7bc3"
+        },
+        "head_meta.json": {
+          "bytes": 1061,
+          "sha256": "d184edd664ad85bbbb782157a8965db33c36d4a144d8b781d19f5c11cd2778ee"
+        },
+        "head.pt": {
+          "bytes": 29418795,
+          "sha256": "7b801a1901040e70559deb74eadb11709540ff65ef926213ecf881e4f4070320"
+        },
+        "processor_config.json": {
+          "bytes": 1189,
+          "sha256": "bcbca4244c9b61672113167b05f159dc8a33741661ef7b1fc72bf6812a770bcc"
+        },
+        "new_tok_emb.pt": {
+          "bytes": 22085,
+          "sha256": "cd78e3440c03c7ace689ddb3b05f860c5cc59b710a8202cbc8f8252de1cd18de"
+        },
+        "chat_template.jinja": {
+          "bytes": 7756,
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 243854336,
+          "sha256": "96247914d7e2e68a7124c35c49393267c2beb98769d096f5172ed0043851f0f0"
+        }
+      },
+      "training_steps_this_stage": 3000,
+      "published_revision": "87e1d05d83739c4cb7e182124e3f4bd452800a39",
+      "tag": "v1.1"
+    },
+    {
+      "name": "OmniJev-2B",
+      "repo_id": "tinnel123/OmniJev-2B",
+      "base_model": "Qwen/Qwen3.5-2B",
+      "previous_revision": "48b43ffc194a37f19854b65ab311a9754c900ad3",
+      "files": {
+        "tokenizer.json": {
+          "bytes": 19989712,
+          "sha256": "2f838eae798ef282bfcbbeb01645e728680e9b8b493ef3e0c63ff2d9ed28a8c4"
+        },
+        "ord.pt": {
+          "bytes": 8399957,
+          "sha256": "67dfca04951b11ccb45eb4b6f369b7d8f3ae1c1eaaa57ef688c048d0314671d3"
+        },
+        "adapter_config.json": {
+          "bytes": 1269,
+          "sha256": "ed78a37cffbc463132e2c4976a12daf9b760c502b27fb03bf4386023dd764a13"
+        },
+        "tokenizer_config.json": {
+          "bytes": 1226,
+          "sha256": "feaa62c900dd7ec96738aa38df18eef2fac49269a987947a22f157cd70fe7bc3"
+        },
+        "head_meta.json": {
+          "bytes": 1275,
+          "sha256": "b9608b9dec20ebc4d58879439f1e5a7974b61534d4f5a8602ae0046d9fbfb1c7"
+        },
+        "head.pt": {
+          "bytes": 25224491,
+          "sha256": "9a2b0b851d34a585d13c335172d6b416129d5da9afe27bf2ce32390607cf4ae1"
+        },
+        "processor_config.json": {
+          "bytes": 1189,
+          "sha256": "bcbca4244c9b61672113167b05f159dc8a33741661ef7b1fc72bf6812a770bcc"
+        },
+        "new_tok_emb.pt": {
+          "bytes": 17989,
+          "sha256": "6f69a21370ca8343705abfc57fb414f139c3b271b4ee07786f6cb9e81acc1f8a"
+        },
+        "chat_template.jinja": {
+          "bytes": 7755,
+          "sha256": "273d8e0e683b885071fb17e08d71e5f2a5ddfb5309756181681de4f5a1822d80"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 125087712,
+          "sha256": "735712c407fda9183a58837cad6e0da1265d6da0106645c9955019857a0698ee"
+        }
+      },
+      "training_steps_this_stage": 4000,
+      "published_revision": "52838b37003f75d90c1e1ed86d34ee2aa5dd0c1d",
+      "tag": "v1.1"
+    },
+    {
+      "name": "OmniJev-0.8B",
+      "repo_id": "tinnel123/OmniJev-0.8B",
+      "base_model": "Qwen/Qwen3.5-0.8B",
+      "previous_revision": "5b54b87ea83c45df8e3fcb6e3ed93017d797bd3f",
+      "files": {
+        "tokenizer.json": {
+          "bytes": 19989712,
+          "sha256": "2f838eae798ef282bfcbbeb01645e728680e9b8b493ef3e0c63ff2d9ed28a8c4"
+        },
+        "ord.pt": {
+          "bytes": 4205653,
+          "sha256": "714697558f991f5e6cb4aacbc516d743626b17d029cd73bf386f9caa5859ba6c"
+        },
+        "adapter_config.json": {
+          "bytes": 1271,
+          "sha256": "8172394852330b78638fe6ead125917b9e4ec6bb2d0cdf03fc711c38ac529d44"
+        },
+        "tokenizer_config.json": {
+          "bytes": 1226,
+          "sha256": "feaa62c900dd7ec96738aa38df18eef2fac49269a987947a22f157cd70fe7bc3"
+        },
+        "head_meta.json": {
+          "bytes": 1278,
+          "sha256": "85cc4581a2cc1fb7d9382bd39f71c045485cc74ce59677eccce9cb4bf0ab14f5"
+        },
+        "head.pt": {
+          "bytes": 16835883,
+          "sha256": "d20f53b0c9458e01870e45154ae34ec2e313f79dd32f4980e5ccecd30354cfd7"
+        },
+        "processor_config.json": {
+          "bytes": 1189,
+          "sha256": "bcbca4244c9b61672113167b05f159dc8a33741661ef7b1fc72bf6812a770bcc"
+        },
+        "new_tok_emb.pt": {
+          "bytes": 9797,
+          "sha256": "509edb2d8a1685da0ab796d7d16dce279232071c75f0ac4f4434d23f73617446"
+        },
+        "chat_template.jinja": {
+          "bytes": 7755,
+          "sha256": "273d8e0e683b885071fb17e08d71e5f2a5ddfb5309756181681de4f5a1822d80"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 81833800,
+          "sha256": "fecb22639ad3df3a0db3f17f096ae180a56120ef895f4ad18b4422e51727ad71"
+        }
+      },
+      "training_steps_this_stage": 5000,
+      "published_revision": "3c9aa908f3c9d3f3ccf16bb281ee705d9e98252f",
+      "tag": "v1.1"
+    },
+    {
+      "name": "OmniJev-SFT-0.8B",
+      "repo_id": "tinnel123/OmniJev-SFT-0.8B",
+      "base_model": "Qwen/Qwen3.5-0.8B",
+      "previous_revision": null,
+      "files": {
+        "tokenizer.json": {
+          "bytes": 19989343,
+          "sha256": "87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4"
+        },
+        "sft_meta.json": {
+          "bytes": 274,
+          "sha256": "180ce6ad99d9d7ee6225e836ec0cc80c4e221c563c02d6a3e6dc748524ff4146"
+        },
+        "adapter_config.json": {
+          "bytes": 1271,
+          "sha256": "58249cc4c0b67b5875d647476a1608110acdd776b31a3d2adb822f08b062cdfc"
+        },
+        "tokenizer_config.json": {
+          "bytes": 1163,
+          "sha256": "9893be2241b6440b2f5f2d1a7972ee8ec5788b48caf4dc33f53be433bc55e5c8"
+        },
+        "processor_config.json": {
+          "bytes": 1189,
+          "sha256": "bcbca4244c9b61672113167b05f159dc8a33741661ef7b1fc72bf6812a770bcc"
+        },
+        "chat_template.jinja": {
+          "bytes": 7755,
+          "sha256": "273d8e0e683b885071fb17e08d71e5f2a5ddfb5309756181681de4f5a1822d80"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 81833800,
+          "sha256": "4c9c20034a4a8a946687b26ebdaabb9607af6fe557ff6e3285556190169ecc90"
+        }
+      },
+      "training_steps_this_stage": 12500,
+      "published_revision": "146183a9150670230a31a8cd7c258983b5f4a8d5",
+      "tag": "v1.1"
+    }
+  ],
+  "archives": [
+    {
+      "file": "OmniJev-4B-v1.1.tar.gz",
+      "bytes": 268393338,
+      "sha256": "fbb4450a9e6180acce6a955982d4bc8eab21a6fe0112e9091ad8521c0818297d"
+    },
+    {
+      "file": "OmniJev-2B-v1.1.tar.gz",
+      "bytes": 152402828,
+      "sha256": "1587f51d2e6c88422213b6b606dd9c24515eef62622390f6ec05014f5bce18f4"
+    },
+    {
+      "file": "OmniJev-0.8B-v1.1.tar.gz",
+      "bytes": 100548082,
+      "sha256": "55491996e4dcedfaa1659841ccd2011fe87431cda0d91467d60da522c1e17cb5"
+    },
+    {
+      "file": "OmniJev-SFT-0.8B-v1.1.tar.gz",
+      "bytes": 80937105,
+      "sha256": "deb98e945820a8032c7aac1c8873566e49d40539376d2fb0ef010c0b98a0951d"
+    }
+  ]
+}
