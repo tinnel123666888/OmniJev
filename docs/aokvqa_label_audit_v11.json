@@ -1,0 +1,43 @@
+{
+  "cause": "direct_answers serialized list was indexed as a string by rng.choice; synthesized A-OKVQA gu_yes is invalid as a benchmark",
+  "counts": {
+    "all_yesno": 1335,
+    "positive_yesno": 654,
+    "invalid_positive": 654
+  },
+  "examples": [
+    {
+      "row": "aokvqa_23x4iQXWfAeZxqCJVbTuv5",
+      "answer": "h"
+    },
+    {
+      "row": "aokvqa_24pdoq3jwTbLqATxYufZJZ",
+      "answer": "t"
+    },
+    {
+      "row": "aokvqa_29VgB2ivboXv7B6JxARjcg",
+      "answer": "w"
+    },
+    {
+      "row": "aokvqa_2EbZu7iEtdGJzJCeNgwQsG",
+      "answer": "r"
+    },
+    {
+      "row": "aokvqa_2FQYhL4vCZP5riVcSEsRdB",
+      "answer": "'"
+    },
+    {
+      "row": "aokvqa_2HamnfFKZ3NefA7VBsm9Wg",
+      "answer": "h"
+    },
+    {
+      "row": "aokvqa_2JbbFqFz6QvReaUgNpqAmr",
+      "answer": "]"
+    },
+    {
+      "row": "aokvqa_2Jxo7EzfEguLnWDuERYVeH",
+      "answer": ","
+    }
+  ],
+  "policy": "exclude all old synthesized A-OKVQA gu_yes from valid score summaries and v1.2 training; retain original evidence"
+}
