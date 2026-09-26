@@ -1,0 +1,80 @@
+{
+  "status": "collected successful imitation candidates; NOT in sealed stage2 training",
+  "source": "gym-super-mario-bros7.4.0 and nes-py8.2.1",
+  "teacher": "privileged emulator lookahead, horizon48, first8frames executed; not OmniJev",
+  "successful_episodes": [
+    {
+      "episode": "nes_1-1_delay0",
+      "records": 145
+    },
+    {
+      "episode": "nes_1-1_delay12",
+      "records": 145
+    },
+    {
+      "episode": "nes_1-1_delay24",
+      "records": 145
+    },
+    {
+      "episode": "nes_1-1_delay36",
+      "records": 145
+    },
+    {
+      "episode": "nes_1-1_delay48",
+      "records": 145
+    },
+    {
+      "episode": "nes_1-1_delay60",
+      "records": 145
+    },
+    {
+      "episode": "nes_1-1_delay72",
+      "records": 145
+    },
+    {
+      "episode": "nes_1-1_delay84",
+      "records": 145
+    },
+    {
+      "episode": "nes_1-1_delay96",
+      "records": 145
+    }
+  ],
+  "failed_episodes": [
+    {
+      "episode": "nes_1-2_delay0",
+      "success": false,
+      "frames": 1440,
+      "x_pos": 3057,
+      "records": 180,
+      "seconds": 175.15941214561462,
+      "teacher_only": true,
+      "admitted_to_training": false
+    },
+    {
+      "episode": "nes_1-3_delay0",
+      "success": false,
+      "frames": 258,
+      "x_pos": 771,
+      "records": 33,
+      "seconds": 29.067816972732544,
+      "teacher_only": true,
+      "admitted_to_training": false
+    },
+    {
+      "episode": "nes_2-1_delay0",
+      "success": false,
+      "frames": 1408,
+      "x_pos": 3026,
+      "records": 176,
+      "seconds": 171.68637824058533,
+      "teacher_only": true,
+      "admitted_to_training": false
+    }
+  ],
+  "records": 1305,
+  "unique_ordered_rgb_states": 1302,
+  "unique_ordered_states_without_top32px_hud": 1302,
+  "split_caveat": "One fixed level and largely same path. No claim of independent scenarios or cross-level generalization. No train/test split released.",
+  "teacher_code_sha256": "a8522816fbfdc3a4ded17a47217f7b0d577a4f93f25f805a506b76f2c83d57c7"
+}

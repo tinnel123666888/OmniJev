@@ -89,3 +89,5 @@ The baseline is zero robot commands, zero steering/acceleration, always-forward 
 ## NES Mario data collection
 
 A separate emulator-lookahead teacher completed NES Mario 1-1 at nine initial delays, producing 1,305 pre-action records. The same teacher failed the tested 1-2, 1-3 and 2-1 runs. Failed trajectories are retained for diagnosis and excluded from successful-imitation data. These are **teacher outcomes, not OmniJev outcomes**; the nine starts share one fixed map and largely the same path. This pilot is not part of the already sealed stage-two training bundle, and does not establish cross-level gameplay.
+
+[NES collection manifest, including all three failed runs](v12_nes_teacher_manifest.json). The stage-two model rollout protocol was fixed before its offline metrics were produced: [64-episode protocol and client code hash](v12_closed_loop_stage2_protocol.json).
