@@ -25,6 +25,8 @@ Eight short videos and a 40-second compilation, produced with **OmniJev-4B v1.1*
 </tr>
 </table>
 
+**Mario limitation / 马里奥局限：** This replay does not demonstrate gameplay competence. Its next-action match rate is 24/28, exactly the same as always choosing `right_B` on this clip; the historical held-out next-action score is 43.52% (193 questions). No closed-loop success rate has been established. [Dataset score audit / 成绩审计](dataset_scores_v11.md).
+
 ## Reading the videos / 如何看
 
 - Purple bars show the model's probabilities; green **REF** text is the dataset annotation. Incorrect predictions are retained.

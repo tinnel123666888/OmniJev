@@ -22,7 +22,7 @@
 
 OmniJev fine-tunes Qwen3.5 vision-language backbones with LoRA, decision heads and an ordinal head. v1.1 covers web and phone operation, robot scenes, video, games, board games, audio spectrograms and text. The current training manifest is still being audited; the earlier 270,000-record figure is not an exact count for this release.
 
-A 4B model that **sees images and video** and makes decisions about them: **operate phones and computers**, **play games in real time**, **control robots**, **monitor camera feeds** (hazards, gestures, events). It reads the picture together with your question and any text context, answers with **calibrated probabilities** instead of generated text, and can say *none of the above*.
+A 4B model that answers decision questions about images, video, phone and computer screens, games and robot scenes. The released demonstrations are offline replays; reliable closed-loop gameplay and robot control have not been established. It reads the picture together with your question and any text context, answers with **calibrated probabilities** instead of generated text, and can say *none of the above*.
 
 ## What it is
 
@@ -106,6 +106,8 @@ The clips below illustrate tasks and the interface using historical releases. Th
 </table>
 
 ## Results — v1.1, 2026-09-26
+
+**Score audit:** these are capped task-family aggregates, not complete per-dataset benchmark results. [Read the dataset/subset scores and missing coverage](docs/dataset_scores_v11.md). Mario next-action accuracy is 43.52% (193 questions), not the mixed 56.05%; OK-VQA 93.47% uses supplied candidates including the gold answer, not official open-ended VQA scoring. The old safety report covers HaGRID only.
 
 [Full per-family metrics and counts](docs/results_v11_zh.md) · [Aggregate source reports](docs/results_v11.json) · [Release manifest](docs/release_v11.json)
 
