@@ -1,10 +1,10 @@
 {
   "model": "OmniJev-4B v1.1",
-  "mode": "Recorded-trajectory illustrations selected before inference, not closed-loop control or a benchmark. Some records may overlap training.",
-  "states": 209,
-  "questions": 611,
+  "mode": "Recorded-trajectory illustrations, not closed-loop control or a benchmark. Some records may overlap training. The original scenes were selected before inference; public curation on 2026-09-28 withdrew the Mario demo after review.",
+  "states": 181,
+  "questions": 527,
   "plan_sha256": "1a58340a7f5d3bef3b1811c15d5d15d38ebc342042fc85064d3879ab152919af",
-  "inference_wall_s_median": 0.2405694155022502,
+  "inference_wall_s_median": 0.2573986314237118,
   "clips": [
     {
       "id": "snake",
@@ -13,14 +13,6 @@
       "seconds": 19.0,
       "frames": 456,
       "sha256": "05d68bea5a69065a79c398d0548e0de5efee54359e9bbca21dc308cb5bb3d7b6"
-    },
-    {
-      "id": "mario",
-      "title": "马里奥 · 双帧动作判断",
-      "states": 28,
-      "seconds": 16.5,
-      "frames": 396,
-      "sha256": "eaf75232737cfef7646b50505fa1a44d496c67ea5233f2485eb731206805b4fc"
     },
     {
       "id": "arcade",
@@ -72,11 +64,20 @@
     }
   ],
   "showreel": {
-    "seconds": 40.291666666666664,
-    "frames": 967,
-    "sha256": "195e735dff4ac26c21cd277df7f2af0243d6d4c40eac3c08a5a33131ca2d8941"
+    "seconds": 35.291666666666664,
+    "frames": 847,
+    "sha256": "61411a74557924e61d23e66e3a2bb55e61aba0184d57f549717063892b317c90",
+    "clip_ids": [
+      "snake",
+      "arcade",
+      "board",
+      "phone",
+      "web",
+      "robot",
+      "video"
+    ]
   },
-  "validation": "All 9 MP4 files fully decoded; all 8 GIFs have multiple frames; gallery links resolve; all 611 output distributions finite and bounded; all workers used the same checkpoint files and final input plan.",
+  "validation": "All 8 retained MP4s fully decoded; all 7 GIFs checked. The 7 original clips are byte-identical to their published versions. The compilation was re-rendered from only the retained original states and saved model outputs; no new inference. Historical validation of all 611 original output distributions is unchanged; this public selection contains 527 questions.",
   "checkpoint": {
     "repo": "tinnel123/OmniJev-4B",
     "revision": "v1.1",
@@ -95,12 +96,21 @@
   },
   "sources": {
     "snake": "Synthetic Snake trajectories",
-    "mario": "OpenGenGAME Super Mario Bros recordings",
     "arcade": "JAT Atari recordings: Enduro, Skiing, Pong",
     "board": "Chess positions and synthetic Gomoku trajectories",
     "phone": "AndroidControl",
     "web": "Mind2Web official test-task split",
     "robot": "Bridge robot recordings",
     "video": "Charades event frames"
+  },
+  "curation": {
+    "date": "2026-09-28",
+    "withdrawn_demo_ids": [
+      "mario"
+    ],
+    "reason": "The replay did not establish gameplay competence. Removed from the gallery, compilation and release download. Existing dataset scores remain in the score audit.",
+    "retained_original_state_ids_sha256": "4286cefdd496659921baee08bfaeb498eb06d939257e718a0928b22ca6aaea19",
+    "new_inference_performed": false,
+    "other_clip_bytes_unchanged": true
   }
 }

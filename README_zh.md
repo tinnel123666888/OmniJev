@@ -18,6 +18,17 @@
 
 ---
 
+## 🗓️ 版本更新
+
+| 版本 | 主要更新 |
+| --- | --- |
+| 🚀 **v1.1** | 当前正式发布：多图训练与推理、三尺寸权重、SFT 基线、逐数据集及题型成绩 |
+| 🛠️ **v1.0** | 开发迭代：扩展混合数据，加入机器人点动题，修复长文本与输入链路 |
+| 🧩 **v0.9** | 开发迭代：通用选择与弃权、两阶段网格定位、重平衡采样 |
+| 🌱 **v0.8** | 历史 4B 发布：切换 Qwen3.5-4B，扩展多领域决策任务与统一接口 |
+
+[查看 v0.8 → v1.1 完整更新记录](CHANGELOG.md) · [v1.1 发布与下载](https://github.com/tinnel123666888/OmniJev/releases/tag/v1.1)
+
 ## 它能干什么
 
 OmniJev 基于 Qwen3.5 视觉语言底座，以 LoRA、决策头和序数头微调为多模态决策模型。v1.1 覆盖网页与手机操作、机器人画面、视频、游戏、棋类、音频频谱图和文本等任务；当前训练清单仍在审计，不沿用旧版本的 27 万记录作为本轮精确规模。
@@ -54,16 +65,16 @@ OmniJev 是一个 *System One* 决策模型。你不是让它写字，而是给�
 
 ## v1.1 新演示
 
-**8 支短片 + 40 秒合集，209 个状态、611 个问题，全部使用 v1.1 4B 真实推理。** 游戏、手机、网页、双视角机器人与视频理解；紫色为模型概率，绿色 REF 为参考标注。
+**7 支短片 + 35 秒合集，181 个状态、527 个问题，全部使用 v1.1 4B 真实推理。** 游戏、手机、网页、双视角机器人与视频理解；紫色为模型概率，绿色 REF 为参考标注。
 
-[查看全部 8 类演示](docs/demos_v11.md) · [播放/下载合集](https://github.com/tinnel123666888/OmniJev/raw/refs/heads/main/docs/media/v11/showreel.mp4) · [下载完整包](https://github.com/tinnel123666888/OmniJev/releases/download/v1.1/OmniJev-v1.1-demo-pack.zip)
+[查看全部 7 类演示](docs/demos_v11.md) · [播放/下载合集](https://github.com/tinnel123666888/OmniJev/raw/refs/heads/main/docs/media/v11/showreel.mp4) · [下载完整包](https://github.com/tinnel123666888/OmniJev/releases/download/v1.1/OmniJev-v1.1-demo-pack-20260928.zip)
 
 这些是原始轨迹的回放分析，操作并非由模型在线执行；部分素材可能与训练数据重叠，不作为新的评测成绩。
 
 <table>
 <tr>
 <td width="50%"><a href="docs/media/v11/arcade.mp4"><img src="docs/media/v11/arcade.gif" width="100%" alt="街机三连 · 赛车、滑雪与乒乓球"></a><br><sub><b>街机三连 · 赛车、滑雪与乒乓球</b> · 22.5s · <a href="docs/media/v11/arcade.mp4">MP4</a></sub></td>
-<td width="50%"><a href="docs/media/v11/mario.mp4"><img src="docs/media/v11/mario.gif" width="100%" alt="马里奥 · 双帧动作判断"></a><br><sub><b>马里奥 · 双帧动作判断</b> · 16.5s · <a href="docs/media/v11/mario.mp4">MP4</a></sub></td>
+<td width="50%"><a href="docs/media/v11/board.mp4"><img src="docs/media/v11/board.gif" width="100%" alt="棋盘推理 · 国际象棋与五子棋"></a><br><sub><b>棋盘推理 · 国际象棋与五子棋</b> · 14.4s · <a href="docs/media/v11/board.mp4">MP4</a></sub></td>
 </tr>
 <tr>
 <td width="50%"><a href="docs/media/v11/phone.mp4"><img src="docs/media/v11/phone.gif" width="100%" alt="手机操作 · 伦敦天气、59 分钟计时、绘画教程"></a><br><sub><b>手机操作 · 伦敦天气、59 分钟计时、绘画教程</b> · 26.2s · <a href="docs/media/v11/phone.mp4">MP4</a></sub></td>

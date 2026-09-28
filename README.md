@@ -18,6 +18,17 @@
 
 ---
 
+## 🗓️ Version updates
+
+| Version | Highlights |
+| --- | --- |
+| 🚀 **v1.1** | Current release: multi-image training and inference, three sizes, SFT baseline, dataset and question-type scores |
+| 🛠️ **v1.0** | Development: broader data mix, robot jog questions, long-text and input-pipeline repairs |
+| 🧩 **v0.9** | Development: general choices with abstention, two-stage grids, rebalanced sampling |
+| 🌱 **v0.8** | Historical 4B release: Qwen3.5-4B, broader decision tasks and a shared API |
+
+[Read the full v0.8 → v1.1 changelog](CHANGELOG.md) · [v1.1 release and downloads](https://github.com/tinnel123666888/OmniJev/releases/tag/v1.1)
+
 ## What it can do
 
 OmniJev fine-tunes Qwen3.5 vision-language backbones with LoRA, decision heads and an ordinal head. v1.1 covers web and phone operation, robot scenes, video, games, board games, audio spectrograms and text. The current training manifest is still being audited; the earlier 270,000-record figure is not an exact count for this release.
@@ -54,16 +65,16 @@ Download all four weight packages and SHA-256 checksums from the [GitHub v1.1 re
 
 ## v1.1 replay demos
 
-**8 short videos + a 40-second compilation, 209 states and 611 questions, all with real v1.1 4B inference.** Games, phones, web tasks, two-view robot scenes and video understanding. Purple shows model probabilities; green REF shows source annotations.
+**7 short videos + a 35-second compilation, 181 states and 527 questions, all with real v1.1 4B inference.** Games, phones, web tasks, two-view robot scenes and video understanding. Purple shows model probabilities; green REF shows source annotations.
 
-[All 8 demos](docs/demos_v11.md) · [Watch/download the compilation](https://github.com/tinnel123666888/OmniJev/raw/refs/heads/main/docs/media/v11/showreel.mp4) · [Download the full pack](https://github.com/tinnel123666888/OmniJev/releases/download/v1.1/OmniJev-v1.1-demo-pack.zip)
+[All 7 demos](docs/demos_v11.md) · [Watch/download the compilation](https://github.com/tinnel123666888/OmniJev/raw/refs/heads/main/docs/media/v11/showreel.mp4) · [Download the full pack](https://github.com/tinnel123666888/OmniJev/releases/download/v1.1/OmniJev-v1.1-demo-pack-20260928.zip)
 
 These are recorded-trajectory replays, not live model-controlled runs. Some inputs may overlap training; they are illustrations, not new benchmark results.
 
 <table>
 <tr>
 <td width="50%"><a href="docs/media/v11/arcade.mp4"><img src="docs/media/v11/arcade.gif" width="100%" alt="Arcade: Enduro, Skiing and Pong"></a><br><sub><b>Arcade: Enduro, Skiing and Pong</b> · 22.5s · <a href="docs/media/v11/arcade.mp4">MP4</a></sub></td>
-<td width="50%"><a href="docs/media/v11/mario.mp4"><img src="docs/media/v11/mario.gif" width="100%" alt="Mario: run and jump from two frames"></a><br><sub><b>Mario: run and jump from two frames</b> · 16.5s · <a href="docs/media/v11/mario.mp4">MP4</a></sub></td>
+<td width="50%"><a href="docs/media/v11/board.mp4"><img src="docs/media/v11/board.gif" width="100%" alt="Board games: chess and Gomoku"></a><br><sub><b>Board games: chess and Gomoku</b> · 14.4s · <a href="docs/media/v11/board.mp4">MP4</a></sub></td>
 </tr>
 <tr>
 <td width="50%"><a href="docs/media/v11/phone.mp4"><img src="docs/media/v11/phone.gif" width="100%" alt="Phone: weather, timer and drawing tutorial"></a><br><sub><b>Phone: weather, timer and drawing tutorial</b> · 26.2s · <a href="docs/media/v11/phone.mp4">MP4</a></sub></td>
